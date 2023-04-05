@@ -4,8 +4,23 @@ import { useTheme } from 'native-base';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import OneSignal, { NotificationReceivedEvent, OSNotification } from 'react-native-onesignal';
 
+
 import { Notification } from '../components/Notification';
 import { AppRoutes } from './app.routes';
+
+const linking  ={
+  prefixes: ['com.rocketseat.igniteshoes://', 'igniteshoesapp://', 'exp+igniteshoesapp://'],
+  config: {
+    screens: {
+      details: {
+        path: 'details/:productId',
+        parse: {
+          productId: (productId: string) => productId
+        }
+      }
+    }
+  }
+}
 
 export function Routes() {
   const { colors } = useTheme();
@@ -25,7 +40,7 @@ export function Routes() {
   }, []);
 
   return (
-    <NavigationContainer theme={theme}>
+    <NavigationContainer theme={theme} linking={linking}>
       <AppRoutes />
 
       { notificationData?.title && (

@@ -10,13 +10,10 @@ import { THEME } from './src/theme';
 import { Loading } from './src/components/Loading';
 
 import { CartContextProvider } from './src/contexts/CartContext';
-import { tagUserCreateInfo } from './src/notifications/notificationsTags';
 
 OneSignal.setAppId('b57fc388-9e5b-4582-8e0e-1b7694386512');
 
 OneSignal.promptForPushNotificationsWithUserResponse();
-
-tagUserCreateInfo();
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });

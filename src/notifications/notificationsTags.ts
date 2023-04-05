@@ -6,3 +6,7 @@ export function tagUserCreateInfo() {
         'user_role': 'personal_trainer'
     });
 }
+
+export function tagCartUpdate(itemsCount: string) {
+    OneSignal.sendTag('cart_items_count', itemsCount);
+}
